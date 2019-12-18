@@ -14,9 +14,12 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
   const [isLoading, setIsLoading] = useState(true);
   const [codePost, setCodePost] = useState();
   const [zipCode, setZipCode] = useState(
-    Data[stepScreen].input2.isChecked === true &&
-      Data[stepScreen].input2.zipcode
+    Data[stepScreen].input2.isChecked === true
+      ? Data[stepScreen].input2.zipcode
+      : null
   );
+  // Data[stepScreen].input2.isChecked === true ? Data[stepScreen].input2.zipcode:null
+
   const [zipVisible, setZipVisible] = useState(true);
 
   const fetchData = async value => {
@@ -77,9 +80,10 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
               }}
             ></input>
           </div>
+          {/* ######### display zipcode ######### */}
           <div className="relativePosition">
-            {console.log(codePost)}
-            {isLoading === false && codePost.length && zipVisible > 0 ? (
+            {console.log("CodePoste->zipCodeList", codePost)}
+            {isLoading === false && codePost.length && zipVisible ? (
               <ul className="zipCodeList">
                 {codePost.map((value, index) => {
                   return (
@@ -89,6 +93,7 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
                       onClick={() => {
                         setZipVisible(false);
                         setZipCode(value.city + " (" + value.code + ")");
+                        setStepScreen(stepScreen + 1);
                         // Set checked question to true
                         Data[stepScreen].input1.isChecked = true;
                         Data[stepScreen].input2.isChecked = true;
@@ -99,7 +104,6 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
                           expires: 1,
                           path: "/"
                         });
-                        // setStepScreen(stepScreen + 1);
                         Cookies.set("stepscreen", stepScreen, {
                           expires: 1,
                           path: "/"

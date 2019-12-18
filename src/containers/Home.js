@@ -17,16 +17,26 @@ export default function Home({ Data }) {
   console.log("Home->", Data);
 
   const [stepScreen, setStepScreen] = useState(0);
+  const [propertyPurchase, setPropertyPurchase] = useState(0);
+
   const [previous, setPrevious] = useState(false);
   const [progress, setProgress] = useState(0);
   const [nextStep, setNextStep] = useState(false);
 
   useEffect(() => {
     const fetchcookies = async () => {
-      console.log("Home->GetCookies->", Cookies.get("stepscreen"));
-      let ValueCookies = Cookies.get("stepscreen");
-      if (ValueCookies) {
-        setStepScreen(JSON.parse(ValueCookies));
+      //Loading Cookies StepScreen recorded
+      let LoadCookies1 = Cookies.get("stepscreen");
+      if (LoadCookies1) {
+        let ValueCookies = JSON.parse(LoadCookies1);
+        console.log("Home->GetCookies->stepscreen", ValueCookies);
+        setStepScreen(ValueCookies);
+      }
+      //Loading Cookies propertyPurchase recorded
+      let LoadCookies2 = Cookies.get("PropertyPurchase");
+      if (LoadCookies2) {
+        console.log("Home->GetCookies->PropertyPurchase", LoadCookies2);
+        setPropertyPurchase(LoadCookies2);
       }
     };
     fetchcookies();
@@ -51,6 +61,7 @@ export default function Home({ Data }) {
           Data={Data}
           stepScreen={stepScreen}
           setStepScreen={setStepScreen}
+          propertyPurchase={propertyPurchase}
         />
       ) : Data[stepScreen].screen === "getemail" ? (
         <GetEmail
@@ -69,7 +80,7 @@ export default function Home({ Data }) {
           <Header />
           <div>
             idx {stepScreen} - screen {Data[stepScreen].screen} -
-            {!Data[stepScreen].isChecked ? "false" : "true"}
+            {!Data[stepScreen].isChecked ? "false" : "true"} {propertyPurchase}
           </div>
           <div>
             <Items
@@ -77,6 +88,7 @@ export default function Home({ Data }) {
               stepScreen={stepScreen}
               setStepScreen={setStepScreen}
               setPrevious={setPrevious}
+              setPropertyPurchase={setPropertyPurchase}
             />
           </div>
           <Footer

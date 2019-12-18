@@ -8,6 +8,7 @@ export default function Item({
   questionIdx,
   stepScreen,
   setStepScreen,
+  setPropertyPurchase,
   setPrevious
 }) {
   console.log("Item-->text-->", Data[stepScreen].questions[questionIdx].text);
@@ -22,17 +23,25 @@ export default function Item({
       onClick={() => {
         // Set all questions to false
         Data[stepScreen].questions.map((q, i) => {
-          console.log("=====>", q, i);
+          console.log("Item-->SetQtoFalse", q, i);
           Data[stepScreen].questions[i].isChecked = false;
         });
         // Set checked question to true
         Data[stepScreen].questions[questionIdx].isChecked = true;
         Data[stepScreen].isChecked = true;
-        Cookies.set("meilleurtaux", Data, { expires: 1, path: "/" });
+        const value = JSON.stringify(Data);
+        Cookies.set("meilleurtaux", value, { expires: 1, path: "/" });
         Cookies.set("stepscreen", stepScreen, { expires: 1, path: "/" });
         setStepScreen(stepScreen + 1);
+        // set the property purchase (neuf/ancien) to calculate amount
+        if (stepScreen === 1) {
+          let value = Data[stepScreen].questions[questionIdx].text;
+          setPropertyPurchase(value);
+          Cookies.set("PropertyPurchase", value, { expires: 1, path: "/" });
+          console.log("Item-->setPropertyPurchase->", value);
+        }
         // setPrevious(true);
-        console.log("clicked", questionName);
+        console.log("Item-->clicked", questionName);
       }}
     >
       <div className="itemText">

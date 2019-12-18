@@ -7,7 +7,8 @@ export default function Items({
   stepScreen,
   setStepScreen,
   setCookies,
-  setPrevious
+  setPrevious,
+  setPropertyPurchase
 }) {
   console.log("Items->", Data);
   return (
@@ -26,6 +27,7 @@ export default function Items({
               setStepScreen={setStepScreen}
               setCookies={setCookies}
               setPrevious={setPrevious}
+              setPropertyPurchase={setPropertyPurchase}
             />
           );
         })}

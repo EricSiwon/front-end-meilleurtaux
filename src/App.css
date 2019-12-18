@@ -193,6 +193,7 @@ label {
   border: 1px solid #ff9e23;
   width: 250px;
   height: 30px;
+  padding-left: 6px;
   font-size: 18px;
   font-weight: 600;
   overflow: hidden;
