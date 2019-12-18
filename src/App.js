@@ -60,7 +60,47 @@ let Data = [
       isChecked: false,
       country: "France"
     },
-    input2: { text: "Ville ou code postal *", isChecked: false, zipcode: 75000 }
+    input2: { text: "Ville ou code postal *", isChecked: false, zipcode: 0 }
+  },
+  {
+    screen: "amount",
+    text: "définisson le montant de votre projet",
+    isChecked: false,
+    input1: {
+      text: "Montant estimé de votre acquisition *",
+      isChecked: false,
+      amount: 0
+    },
+    input2: {
+      text: "Montant estimé des travaux *",
+      isChecked: false,
+      amount: 0
+    },
+    input3: { text: "Frais de notaire", amount: 0 },
+    input4: { text: "Budjet total estimé du projet", amount: 0 }
+  },
+  {
+    screen: "getemail",
+    text: "vos coordonnées",
+    isChecked: false,
+    input1: {
+      text: "Adress e-mail emprunteur *",
+      isChecked: false,
+      amount: 0
+    },
+    check1: {
+      text: "j'accepte de recevoir par email des propositons de Meilleurtaux.",
+      isChecked: false
+    }
+  },
+  {
+    screen: "sendemail",
+    text: "et voilà, le formulaire est terminé !",
+    isChecked: false,
+    input1: {
+      text: "votre numéro de dossier est le :",
+      num: 0
+    }
   }
 ];
 
@@ -75,6 +115,8 @@ function App() {
       try {
         // const response = await axios.get(Url);
         // setQuestions(response.data.questions);
+
+        //record Question Screen in useState
         setQuestions(Data);
         console.log("App->GetCookies->", Cookies.get("meilleurtaux"));
         let ValueCookies = Cookies.get("meilleurtaux");

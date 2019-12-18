@@ -29,6 +29,7 @@ export default function Item({
         Data[stepScreen].questions[questionIdx].isChecked = true;
         Data[stepScreen].isChecked = true;
         Cookies.set("meilleurtaux", Data, { expires: 1, path: "/" });
+        Cookies.set("stepscreen", stepScreen, { expires: 1, path: "/" });
         setStepScreen(stepScreen + 1);
         // setPrevious(true);
         console.log("clicked", questionName);

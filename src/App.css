@@ -68,9 +68,9 @@ h2 {
   cursor: pointer;
 }
 
-span:before {
+/* span:before {
   content: "*";
-}
+} */
 
 .itemText {
   font-weight: 800;
@@ -148,43 +148,108 @@ span:before {
 
 /* ################# CodePost ################# */
 
-.Country {
+.inputRow {
   display: flex;
   flex-direction: row;
   margin: 5px 5px;
   font-size: 20px;
-  width: 420px;
   margin-left: 15px;
   padding: 10px 20px;
   align-items: center;
+}
+.row1 {
   background-color: #f1f1f1;
 }
 
+label {
+  width: 400px;
+}
+
 .selectCountry {
-  width: 300px;
-  font-size: 24px;
-  font-weight: 700;
+  background-color: #ffffff;
+  box-shadow: 0 4px 0 #e57f00;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff9e23;
+  width: 250px;
+  overflow: hidden;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
 
-.labelCountry {
+.selectCountry select {
   font-size: 20px;
-  width: 420px;
-}
-
-.CodePost {
-  display: flex;
-  flex-direction: row;
-  margin: 5px 5px;
-  font-size: 20px;
-  width: 420px;
-  margin-left: 15px;
-  padding: 10px 20px;
-  align-items: center;
-  /* background-color: #ff9e23; */
+  font-weight: 600;
+  padding: 5px 8px;
+  width: 100%;
+  border: none;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
 
 .inputCodePost {
+  background-color: #ffffff;
+  box-shadow: 0 4px 0 #e57f00;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff9e23;
+  width: 250px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  overflow: hidden;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
+
 .infoCodePost {
   margin-left: 15px;
+}
+
+.relativePosition {
+  position: relative;
+}
+
+.zipCodeList {
+  border: 1px solid black;
+  width: 210px;
+  height: 200px;
+  overflow: auto;
+  z-index: 100;
+  position: absolute;
+  top: -30px;
+  left: 435px;
+  /* right: 40px; */
+  background-color: #ffffff;
+}
+.zipCodeSelected {
+  font-weight: 600;
+}
+
+.zipCodeSelected:hover {
+  cursor: pointer;
+}
+
+/* ################# Amount ################# */
+
+.labelText {
+  width: 400px;
+}
+
+.inputAmount {
+  background-color: #ffffff;
+  box-shadow: 0 4px 0 #e57f00;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff9e23;
+  width: 250px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: end;
+  overflow: hidden;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  margin-right: 5px;
+}
+
+.cal {
+  padding-right: 10px;
+  /* border: 1px solid black; */
 }
