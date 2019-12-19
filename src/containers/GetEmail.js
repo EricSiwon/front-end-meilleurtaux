@@ -14,6 +14,8 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
     Data[stepScreen].isChecked === true ? Data[stepScreen].email : null
   );
 
+  Data[stepScreen].email = email;
+
   return (
     <>
       <Header />
@@ -23,7 +25,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
       </div>
       <div className="wrapper">
         <h2>{Data[stepScreen].text}</h2>
-        <div>
+        <div className="textZone">
           <p>
             Un devis vous sera envoyé par mail avec un récapitulatif de votre
             demande.
@@ -49,7 +51,6 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
               setEmail(event.target.value);
             }}
           ></input>
-          <span>€</span>
         </div>
       </div>
       <Footer

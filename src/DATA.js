@@ -1,7 +1,7 @@
 let Data = [
   {
     screen: "question",
-    text: "type de bien",
+    text: "Type de bien",
     isChecked: false,
     questions: [
       { text: "maison", isChecked: false },
@@ -10,7 +10,7 @@ let Data = [
   },
   {
     screen: "question",
-    text: "etat du bien",
+    text: "Etat du bien",
     isChecked: false,
     questions: [
       { text: "ancien", isChecked: false },
@@ -19,7 +19,7 @@ let Data = [
   },
   {
     screen: "question",
-    text: "usage du bien",
+    text: "Usage du bien",
     isChecked: false,
     questions: [
       { text: "résidence principale", isChecked: false },
@@ -29,7 +29,7 @@ let Data = [
   },
   {
     screen: "question",
-    text: "votre situation actuelle",
+    text: "Votre situation actuelle",
     isChecked: false,
     questions: [
       { text: "locataire", isChecked: false },
@@ -75,7 +75,7 @@ let Data = [
     text: "vos coordonnées",
     isChecked: false,
     input1: {
-      text: "Adress e-mail emprunteur *",
+      text: "Adresse e-mail emprunteur *",
       isChecked: false,
       amount: 0
     },

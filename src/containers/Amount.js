@@ -36,7 +36,11 @@ export default function Amount({
       : Number(0);
 
   Data[stepScreen].amount1 = amount1;
+  Data[stepScreen].input1.amount = amount1;
   Data[stepScreen].amount2 = amount2;
+  Data[stepScreen].input2.amount = amount2;
+  Data[stepScreen].input3.amount = buildingAmount;
+  Data[stepScreen].input4.amount = amountTotal;
 
   return (
     <>
