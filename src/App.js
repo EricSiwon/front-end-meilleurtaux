@@ -53,14 +53,13 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {/* <Home Data={questions} /> */}
           {isLoading === true ? (
             <div>En Chargement ... </div>
           ) : (
             <Home Data={questions} />
           )}
         </Route>
-        <Route path="/admin/:user">
+        <Route path="/admin/:username">
           <Admin />
         </Route>
       </Switch>

@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../images/logo.jpg";
 import "../../src/App.css";
 
-export default function Header() {
+export default function Header({user}) {
   return (
     <>
       <div className="wrapper">

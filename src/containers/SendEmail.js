@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../src/App.css";
 
+import axios from "axios";
 import Cookies from "js-cookie";
 
 import Header from "../components/Header";

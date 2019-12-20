@@ -299,6 +299,19 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-right: 5px;
 }
 
+.inputEmailRed {
+  box-shadow: 0 4px 0 #e50000;
+  border: 1px solid #ff2323;
+}
+
+.emailError {
+  box-shadow: 0 4px 0 #e50000;
+  border: 1px solid #ff2323;
+  border-radius: 5px;
+  margin: 0px 5px;
+  padding: 0px 5px;
+}
+
 /* ################# SendEmail ################# */
 
 .result {
@@ -307,4 +320,205 @@ input[type="number"]::-webkit-outer-spin-button {
 .resultDossier {
   padding-left: 5px;
   font-size: 30px;
+}
+
+/* ################# Modal Login ################# */
+
+.modal {
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 400px;
+  height: 300px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-close {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.loginUser {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.loginUserLabel {
+  background-color: #ff9e23;
+  color: #fff;
+  border-color: #ff9e23;
+  border-radius: 5px;
+  display: block;
+  width: 300px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  margin: 15px 0px;
+}
+
+.loginUserPassword {
+  background-color: #ffffff;
+  box-shadow: 0 4px 0 #e57f00;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff9e23;
+  width: 300px;
+  height: 30px;
+  margin: 15px 0px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.loginUserButton {
+  background-color: #e57f00;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff9e23;
+  width: 200px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  margin: 15px 0px;
+}
+
+/* ################# Summary ################# */
+
+.pull-right {
+  display: flex;
+  flex: 1;
+  flex-direction: row-reverse;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  align-items: center;
+}
+
+.auth-container > span {
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* ################# Summary ################# */
+
+/* Smmary & Devis*/
+.container1 {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.row0 {
+  display: flex;
+  margin: 2px 0px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #e57f00;
+}
+
+/* ################# Devis ################# */
+.row {
+  display: flex;
+  margin: 2px 0px;
+  border-radius: 5px;
+  border: 1px solid #ff9e23;
+}
+
+.row:hover {
+  cursor: pointer;
+}
+
+/* Summary & Devis */
+.td1 {
+  text-align: left;
+  padding-left: 3px;
+  width: 150px;
+  border-right: 1px solid #ff9e23;
+}
+.td2 {
+  text-align: left;
+  padding-left: 3px;
+  width: 150px;
+  border-right: 1px solid #ff9e23;
+}
+.td3 {
+  text-align: center;
+  width: 150px;
+  border-right: 1px solid #ff9e23;
+}
+.td4 {
+  text-align: center;
+  width: 150px;
+  border-right: 1px solid #ff9e23;
+}
+.td5 {
+  text-align: right;
+  padding-right: 3px;
+  width: 150px;
+  border-right: 1px solid #ff9e23;
+}
+.td7 {
+  text-align: center;
+  width: 50px;
+}
+
+.td7:hover {
+  cursor: pointer;
+}
+
+/* ################# DetailsDevis ################# */
+.tab0 {
+  width: 750px;
+  margin: auto;
+}
+
+.tab {
+  border-radius: 5px;
+  border: 1px solid #ff9e23;
+}
+
+.tab1 {
+  display: flex;
+  text-align: left;
+  padding-left: 3px;
+}
+
+.tab2 {
+  background-color: #d4d1d1;
+}
+
+.cel1 {
+  text-align: left;
+  padding-left: 3px;
+  width: 500px;
+  border-right: 1px solid #ff9e23;
+}
+
+.cel2 {
+  text-align: left;
+  padding-left: 3px;
+  width: 200px;
 }
