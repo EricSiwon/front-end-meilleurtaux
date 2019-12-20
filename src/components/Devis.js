@@ -11,7 +11,9 @@ export default function Devis({ item, fetchDevis }) {
   const [visible, setVisible] = useState(false);
 
   const deleteDevis = async id => {
-    let Url = "http://localhost:4000/devis/delete?id=" + item._id;
+    let Url =
+      "https://esi-meilleurtaux.herokuapp.com/devis/delete?id=" + item._id;
+    // let Url = "http://localhost:4000/devis/delete?id=" + item._id;
     try {
       const response = await axios.post(Url);
       console.log(response.data);

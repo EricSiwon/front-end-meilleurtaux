@@ -7,7 +7,7 @@ import Home from "./containers/Home";
 import Admin from "./containers/Admin";
 import "./App.css";
 
-let Data = require("./DATA");
+let Data = require("./assets/DATA");
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

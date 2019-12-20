@@ -16,7 +16,8 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
   const history = useHistory();
 
   const fetchDevis = async () => {
-    let Url = "http://localhost:4000/devis";
+    let Url = "https://esi-meilleurtaux.herokuapp.com/devis";
+    // let Url = "http://localhost:4000/devis";
     try {
       const response = await axios.get(Url);
       setDevisList(response.data);

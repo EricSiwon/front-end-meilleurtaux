@@ -67,18 +67,17 @@ export default function SendEmail({ Data, stepScreen }) {
           data.append("email", screen.email);
         }
       });
-
-      let Url = "http://localhost:4000/devis/create";
+      let Url = "https://esi-meilleurtaux.herokuapp.com/devis/create";
+      // let Url = "http://localhost:4000/devis/create";
       try {
         const response = await axios.post(Url, data);
         console.log(response.data);
         setDevis(response.data.numdevis);
         setIsLoading(false);
-      
+
         Cookies.remove("meilleurtaux");
         Cookies.remove("stepscreen");
         Cookies.remove("PropertyPurchase");
-        
       } catch (error) {
         console.log("SenEmail->Error", error);
         if (error.response === undefined) {
