@@ -11,10 +11,13 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
   console.log("GetEmail->");
 
   const [email, setEmail] = useState(
-    Data[stepScreen].isChecked === true ? Data[stepScreen].email : null
+    Data[stepScreen].isChecked === true ? Data[stepScreen].email : undefined
   );
   const [condition, SetCondition] = useState(false);
   const [isErrorMessageDisplayed, setIsErrorMessageDisplayed] = useState(false);
+  const [displayNext, SetDisplayNext] = useState(
+    Data[stepScreen].isChecked === true ? true : false
+  );
 
   console.log("GetEmail->email:", email);
 
@@ -46,11 +49,13 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
           <input
             id="emailTo"
             className={
-              isErrorMessageDisplayed === true && email === ""
+              isErrorMessageDisplayed === true && email === undefined
                 ? "inputEmail inputEmailRed"
                 : "inputEmail"
             }
             type="email"
+            pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+            required
             autoComplete="off"
             size="50"
             ref={React.createRef()}
@@ -64,11 +69,17 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
             onChange={event => {
               console.log("GetEmail->input1->", event.target.value);
               setEmail(event.target.value);
+              Data[stepScreen].input1.isChecked = true;
+              if (Data[stepScreen].check1.isChecked === true) {
+                Data[stepScreen].isChecked = true;
+                SetDisplayNext(true);
+              }
             }}
           ></input>
-          {isErrorMessageDisplayed === true && email === "" && (
-            <span className="emailError">Merci de saisir votre e-mail</span>
-          )}
+          {isErrorMessageDisplayed === true &&
+            (email === undefined || email === "") && (
+              <span className="emailError">Merci de saisir votre e-mail</span>
+            )}
         </div>
 
         <div>
@@ -80,9 +91,19 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
             onClick={() => {
               console.log("GetEmail->condition->", condition);
               SetCondition(!condition);
+              Data[stepScreen].check1.isChecked = true;
+              if (Data[stepScreen].input1.isChecked === true) {
+                Data[stepScreen].isChecked = true;
+                SetDisplayNext(true);
+              }
             }}
           ></input>
           <label htmlFor="condition">{Data[stepScreen].check1.text}</label>
+          {isErrorMessageDisplayed === true && !condition && (
+            <span className="conditionError">
+              Veuillez accepter les conditions générales
+            </span>
+          )}
         </div>
       </div>
 
@@ -90,6 +111,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
         Data={Data}
         stepScreen={stepScreen}
         setStepScreen={setStepScreen}
+        displayNext={displayNext}
       />
       <Mentions />
     </>

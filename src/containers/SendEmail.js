@@ -74,9 +74,11 @@ export default function SendEmail({ Data, stepScreen }) {
         console.log(response.data);
         setDevis(response.data.numdevis);
         setIsLoading(false);
-        // console.log(Cookies.remove("meilleurtaux"));
-        // console.log(Cookies.remove("stepscreen"));
-        // console.log(Cookies.remove("PropertyPurchase"));
+      
+        Cookies.remove("meilleurtaux");
+        Cookies.remove("stepscreen");
+        Cookies.remove("PropertyPurchase");
+        
       } catch (error) {
         console.log("SenEmail->Error", error);
         if (error.response === undefined) {

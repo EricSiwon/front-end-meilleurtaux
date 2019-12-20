@@ -261,6 +261,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .cal {
   padding-right: 10px;
+  cursor: default;
 }
 
 /* ################# GetEmail ################# */
@@ -306,6 +307,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .emailError {
   box-shadow: 0 4px 0 #e50000;
+  border: 1px solid #ff2323;
+  border-radius: 5px;
+  margin: 0px 5px;
+  padding: 0px 5px;
+}
+
+.conditionError {
   border: 1px solid #ff2323;
   border-radius: 5px;
   margin: 0px 5px;

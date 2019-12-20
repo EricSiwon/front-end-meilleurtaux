@@ -3,8 +3,18 @@ import "../../src/App.css";
 
 import Cookies from "js-cookie";
 
-export default function Footer({ Data, stepScreen, setStepScreen }) {
-  console.log("Footer->stepScreen", stepScreen);
+export default function Footer({
+  Data,
+  stepScreen,
+  setStepScreen,
+  displayNext
+}) {
+  console.log(
+    "Footer->stepScreen",
+    stepScreen,
+    Data[stepScreen].isChecked,
+    displayNext
+  );
   return (
     <div className="follower wrapper">
       {stepScreen > 0 ? (
@@ -30,17 +40,26 @@ export default function Footer({ Data, stepScreen, setStepScreen }) {
         Barre avancement:{stepScreen}/{Data.length}:
         {stepScreen > 0 ? (stepScreen / Data.length) * 100 : stepScreen}%
       </div>
+      {/* // display next button if 
+      1=step of screen is checked to true
+      2=displaynext = true (cheked by input information (zipcode,amount,email))
+      
+       (stepScreen > 3 && displayNext === true 
+        Data[stepScreen].isChecked || 
+      */}
 
-      {Data[stepScreen].isChecked || stepScreen > 3 ? (
+      {Data[stepScreen].isChecked === true && displayNext === true ? (
         <div
           className="nextButton"
           onClick={() => {
             setStepScreen(stepScreen + 1);
             if (stepScreen > 3) {
-              Data[stepScreen].isChecked = true;
               const value = JSON.stringify(Data);
               Cookies.set("meilleurtaux", value, { expires: 1, path: "/" });
-              Cookies.set("stepscreen", stepScreen, { expires: 1, path: "/" });
+              Cookies.set("stepscreen", stepScreen, {
+                expires: 1,
+                path: "/"
+              });
             }
             console.log(
               "Footer->clicked->",

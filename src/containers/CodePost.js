@@ -18,7 +18,9 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
       ? Data[stepScreen].input2.zipcode
       : null
   );
-  // Data[stepScreen].input2.isChecked === true ? Data[stepScreen].input2.zipcode:null
+  const [displayNext, SetDisplayNext] = useState(
+    Data[stepScreen].isChecked === true ? true : false
+  );
 
   const [zipVisible, setZipVisible] = useState(true);
 
@@ -93,13 +95,17 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
                       onClick={() => {
                         setZipVisible(false);
                         setZipCode(value.city + " (" + value.code + ")");
-                        setStepScreen(stepScreen + 1);
+                        // setStepScreen(stepScreen + 1);
                         // Set checked question to true
                         Data[stepScreen].input1.isChecked = true;
                         Data[stepScreen].input2.isChecked = true;
+                        //record value
                         Data[stepScreen].input2.zipcode =
                           value.city + " (" + value.code + ")";
+                        //set step to true
                         Data[stepScreen].isChecked = true;
+                        SetDisplayNext(Data[stepScreen].isChecked);
+                        //record cookies
                         Cookies.set("meilleurtaux", Data, {
                           expires: 1,
                           path: "/"
@@ -135,6 +141,7 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
         Data={Data}
         stepScreen={stepScreen}
         setStepScreen={setStepScreen}
+        displayNext={displayNext}
       />
       <Mentions />
     </>

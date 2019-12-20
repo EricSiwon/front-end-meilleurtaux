@@ -95,6 +95,7 @@ export default function Home({ Data }) {
             Data={Data}
             stepScreen={stepScreen}
             setStepScreen={setStepScreen}
+            displayNext={true}
           />
           <Mentions />
         </div>
