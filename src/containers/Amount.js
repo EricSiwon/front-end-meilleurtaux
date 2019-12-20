@@ -27,7 +27,9 @@ export default function Amount({
   const [isErrorMessageDisplayed2, setIsErrorMessageDisplayed2] = useState(
     false
   );
-  const [displayNext, SetDisplayNext] = useState(Data[stepScreen].isChecked === true ? true : false);
+  const [displayNext, SetDisplayNext] = useState(
+    Data[stepScreen].isChecked === true ? true : false
+  );
 
   // tax
 
@@ -137,14 +139,18 @@ export default function Amount({
         <div className="inputRow row1">
           <div className="labelText">{Data[stepScreen].input3.text}</div>
           <div className="inputAmount">
-            <div className="cal">{taxAmount}</div>
+            <div className="cal">
+              {taxAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ")}
+            </div>
           </div>
           <span>€</span>
         </div>
         <div className="inputRow">
           <div className="labelText">{Data[stepScreen].input4.text}</div>
           <div className="inputAmount">
-            <div className="cal">{amountTotal}</div>
+            <div className="cal">
+              {amountTotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ")}
+            </div>
           </div>
           <span>€</span>
         </div>

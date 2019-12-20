@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "../../src/App.css";
+
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useHistory } from "react-router-dom";
+import PasswordStrengthBar from "react-password-strength-bar";
 
 const Login = ({ setUser, setIsModalDisplayed }) => {
   const [email, setEmail] = useState("");
@@ -29,11 +32,12 @@ const Login = ({ setUser, setIsModalDisplayed }) => {
               Cookies.set("token", response.data.token);
               setIsModalDisplayed(false);
               setUser(response.data);
+              history.push("/admin/LeReacteur");
             } else {
               alert("An error occurred");
             }
           } catch (e) {
-            alert(e.message);
+            alert("@LeReacteur : Invalid password (;)");
           }
         }}
       >
@@ -45,6 +49,17 @@ const Login = ({ setUser, setIsModalDisplayed }) => {
           onChange={event => {
             setPassword(event.target.value);
           }}
+        />
+        <PasswordStrengthBar
+          password={password}
+          shortScoreWord="Mot de passe trop cours"
+          scoreWords={[
+            "Mot de passe Faible",
+            "Mot de passe Acceptable",
+            "Mot de passe Bon",
+            "Mot de passe Fort",
+            "Mot de passe Robuste"
+          ]}
         />
         <input
           className="loginUserButton"

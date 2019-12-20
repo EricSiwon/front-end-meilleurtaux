@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+
 import "../../src/App.css";
 
 import axios from "axios";
@@ -15,19 +16,20 @@ export default function Admin() {
   console.log("Admin->token:" + token);
 
   const [user, setUser] = useState({ token: token });
-  const [isModalDisplayed, setIsModalDisplayed] = useState(false);
-
+  const [isModalDisplayed, setIsModalDisplayed] = useState(true);
+  const history = useHistory();
   return (
     <>
       <Header />
       <div className="wrapper">
         {/* <div>Admin : {username} </div> */}
         {isModalDisplayed === true && (
-          <div className="modal">
+          <div className="modal wrapper">
             <div
               className="modal-close"
               onClick={() => {
                 setIsModalDisplayed(false);
+                history.push("/");
               }}
             >
               x

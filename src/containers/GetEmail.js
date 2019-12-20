@@ -82,7 +82,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
             )}
         </div>
 
-        <div>
+        <div className="conditionCheck">
           <input
             id="condition"
             className="inputCondition"
@@ -98,7 +98,9 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
               }
             }}
           ></input>
-          <label htmlFor="condition">{Data[stepScreen].check1.text}</label>
+          <label htmlFor="condition" >
+            {Data[stepScreen].check1.text}
+          </label>
           {isErrorMessageDisplayed === true && !condition && (
             <span className="conditionError">
               Veuillez accepter les conditions générales

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../../src/App.css";
 
 import Cookies from "js-cookie";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 
 export default function Footer({
   Data,
@@ -37,9 +39,22 @@ export default function Footer({
       )}
 
       <div className="progressBarre">
+        <Progress
+          percent={(stepScreen / Data.length) * 100}
+          status="default"
+          theme={{
+            default: {
+              color: "#F89D23"
+            }
+          }}
+        />
+      </div>
+
+      {/* <div>
         Barre avancement:{stepScreen}/{Data.length}:
         {stepScreen > 0 ? (stepScreen / Data.length) * 100 : stepScreen}%
-      </div>
+      </div> */}
+
       {/* // display next button if 
       1=step of screen is checked to true
       2=displaynext = true (cheked by input information (zipcode,amount,email))

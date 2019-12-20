@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "../../src/App.css";
 
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Person } from "@material-ui/icons";
+import { Person, Update } from "@material-ui/icons";
 
 import Devis from "../components/Devis";
 
@@ -12,6 +13,7 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [devisList, setDevisList] = useState();
+  const history = useHistory();
 
   const fetchDevis = async () => {
     let Url = "http://localhost:4000/devis";
@@ -26,11 +28,12 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
 
   useEffect(() => {
     fetchDevis();
-  }, []);
+  }, [user]);
 
   return (
     <>
       <div className="pull-right">
+        <h2>liste des demandes</h2>
         <div className="auth-container">
           {user.token ? (
             <>
@@ -39,6 +42,8 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
                 onClick={() => {
                   setUser({});
                   Cookies.remove("token");
+                  setIsModalDisplayed(true);
+                  history.push("/admin/LeReacteur");
                 }}
               >
                 Se déconnecter
@@ -57,12 +62,12 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
             </>
           )}
         </div>
+        <div></div>
       </div>
       {isLoading === true ? (
         <div>Chargement en cours ...</div>
       ) : (
         <>
-          <div>Summary</div>
           <div className="container1">
             <div className="row0">
               <div className="td1">Lieu</div>
@@ -71,11 +76,18 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
               <div className="td4">Etat du bien</div>
               <div className="td5">Total Opération</div>
             </div>
-            <div className="td7">___</div>
+            <div
+              className="td7"
+              onClick={() => {
+                fetchDevis();
+              }}
+            >
+              <Update />
+            </div>
           </div>
           {devisList.map((item, index) => {
             console.log("Summary-->map", item);
-            return <Devis key={index} item={item} fetchDevis={fetchDevis}/>;
+            return <Devis key={index} item={item} fetchDevis={fetchDevis} />;
           })}
         </>
       )}

@@ -5,6 +5,12 @@
   margin: 0 auto;
 }
 
+input:focus {
+  outline: none !important;
+  border: 2px solid #ff9e23;
+  box-shadow: 0 0 10px #ff9e23;
+}
+
 /* ################# Header ################# */
 
 .header {
@@ -102,8 +108,7 @@ h2 {
 }
 
 .progressBarre {
-  flex: 1;
-  text-align: center;
+  width: 50%;
 }
 
 .nextButton {
@@ -313,6 +318,9 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 0px 5px;
 }
 
+.conditionCheck{
+  margin: 10px 4px 10px 40px;
+}
 .conditionError {
   border: 1px solid #ff2323;
   border-radius: 5px;
@@ -333,10 +341,9 @@ input[type="number"]::-webkit-outer-spin-button {
 /* ################# Modal Login ################# */
 
 .modal {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.7);
   position: fixed;
   height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -355,9 +362,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .modal-close {
   color: white;
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
   font-size: 30px;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -377,7 +385,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 300px;
   height: 35px;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
   margin: 15px 0px;
 }
@@ -414,8 +422,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .pull-right {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pull-right h2 {
   flex: 1;
-  flex-direction: row-reverse;
 }
 
 .auth-container {
