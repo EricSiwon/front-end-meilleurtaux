@@ -43,7 +43,7 @@ export default function Devis({ item, fetchDevis }) {
           className="td7"
           onClick={() => {
             deleteDevis(item._id);
-            setVisible(!visible);
+            setVisible(false);
           }}
         >
           <Delete />
