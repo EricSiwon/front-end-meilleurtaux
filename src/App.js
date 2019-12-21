@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
 import Cookies from "js-cookie";
 
 import Home from "./containers/Home";
 import Admin from "./containers/Admin";
-import "./App.css";
 
+// The questions and screens are in this file
 let Data = require("./assets/DATA");
 
 function App() {
@@ -15,26 +16,23 @@ function App() {
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      //Loading Questions
-      let Url = "https://localhost:4000/api/questions";
       try {
-        // const response = await axios.get(Url);
-        // setQuestions(response.data.questions);
-
         //record Question Screen in useState
         setQuestions(Data);
+        //loadind cookies
+        let ValueCookies = Cookies.get("meilleurtaux");
+        // console.log("App->GetCookies->1", ValueCookies);
 
         //At startup ValueCookies === undefined
-        let ValueCookies = Cookies.get("meilleurtaux");
-        console.log("App->GetCookies->1", ValueCookies);
-
+        //if exist cookies then start with us
         if (ValueCookies !== undefined) {
           let DataCookies = JSON.parse(ValueCookies);
-          console.log("App->GetCookies->2", DataCookies);
+          // console.log("App->GetCookies->2", DataCookies);
           setQuestions(DataCookies);
           Data = DataCookies;
+          //else load local file
         } else {
-          console.log("App->setCookies-->with Data", Data);
+          // console.log("App->setCookies-->with Data", Data);
           const value = JSON.stringify(Data);
           Cookies.set("meilleurtaux", value, { expires: 1, path: "/" });
         }
@@ -46,8 +44,6 @@ function App() {
     };
     fetchQuestions();
   }, []);
-
-  console.log("App-->question not loaded at startup .....", questions);
 
   return (
     <Router>

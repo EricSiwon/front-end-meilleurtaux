@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+import "../../src/App.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Mentions from "../components/Mentions";
-
-import "../../src/App.css";
 
 export default function Amount({
   Data,
@@ -12,7 +11,6 @@ export default function Amount({
   setStepScreen,
   propertyPurchase
 }) {
-  console.log("Amount->");
   // set step to true in amount already exist
   const [amount1, setAmount1] = useState(
     Data[stepScreen].isChecked === true ? Data[stepScreen].amount1 : undefined
@@ -59,11 +57,9 @@ export default function Amount({
   return (
     <>
       <Header />
-      <div>
-        idx {stepScreen} - screen {Data[stepScreen].screen} -
-        {!Data[stepScreen].isChecked ? "false" : "true"}-{propertyPurchase}
-        -tax-{tax}
-      </div>
+
+      {/* Input amount1 */}
+
       <div className="wrapper">
         <h2>{Data[stepScreen].text}</h2>
         <div className="inputRow row1">
@@ -101,6 +97,9 @@ export default function Amount({
             <span className="emailError">Merci de saisir un montant</span>
           )}
         </div>
+
+        {/* Input amount2 */}
+
         <div className="inputRow">
           <label htmlFor="amountTo">{Data[stepScreen].input2.text}</label>
           <input
@@ -114,7 +113,7 @@ export default function Amount({
             autoComplete="off"
             size="50"
             ref={React.createRef()}
-            value={amount2}
+            // value={amount2}
             onBlur={() => {
               setIsErrorMessageDisplayed2(true);
             }}
@@ -136,6 +135,9 @@ export default function Amount({
             <span className="emailError">Merci de saisir un montant</span>
           )}
         </div>
+
+        {/* Tax amount  */}
+
         <div className="inputRow row1">
           <div className="labelText">{Data[stepScreen].input3.text}</div>
           <div className="inputAmount">
@@ -145,9 +147,12 @@ export default function Amount({
           </div>
           <span>€</span>
         </div>
+
+        {/* Total amount  */}
+
         <div className="inputRow">
           <div className="labelText">{Data[stepScreen].input4.text}</div>
-          <div className="inputAmount">
+          <div className="inputAmount lastinput">
             <div className="cal">
               {amountTotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ")}
             </div>
@@ -155,6 +160,7 @@ export default function Amount({
           <span>€</span>
         </div>
       </div>
+
       <Footer
         Data={Data}
         stepScreen={stepScreen}

@@ -8,10 +8,8 @@ export default function Item({
   questionIdx,
   stepScreen,
   setStepScreen,
-  setPropertyPurchase,
-  setPrevious
+  setPropertyPurchase
 }) {
-  console.log("Item-->text-->", Data[stepScreen].questions[questionIdx].text);
   let questionName = Data[stepScreen].questions[questionIdx].text;
   return (
     <div
@@ -21,31 +19,49 @@ export default function Item({
           : "item"
       }
       onClick={() => {
-        // Set all questions to false
+        /* Set all questions to false, 
+           if user change response, the new response are recorded, to true
+                                    the old responses are set to false
+        */
+
         Data[stepScreen].questions.map((q, i) => {
-          console.log("Item-->SetQtoFalse", q, i);
           Data[stepScreen].questions[i].isChecked = false;
+          return "";
         });
+
         // Set checked question to true
         Data[stepScreen].questions[questionIdx].isChecked = true;
         Data[stepScreen].isChecked = true;
+
+        /* Cookies :
+           - meilleurtaux : recorde all questions
+           - stepscreen record the last screen validated 
+           - PropertyPurchase record the property for calculation tax.
+        */
         const value = JSON.stringify(Data);
         Cookies.set("meilleurtaux", value, { expires: 1, path: "/" });
         Cookies.set("stepscreen", stepScreen, { expires: 1, path: "/" });
-        setStepScreen(stepScreen + 1);
+
         // set the property purchase (neuf/ancien) to calculate amount
         if (stepScreen === 1) {
           let value = Data[stepScreen].questions[questionIdx].text;
           setPropertyPurchase(value);
           Cookies.set("PropertyPurchase", value, { expires: 1, path: "/" });
-          console.log("Item-->setPropertyPurchase->", value);
         }
-        // setPrevious(true);
-        console.log("Item-->clicked", questionName);
+
+        // set the next screen
+        setStepScreen(stepScreen + 1);
       }}
     >
       <div className="itemText">
-        <span>*</span>-{questionName}
+        <span
+          className={
+            Data[stepScreen].questions[questionIdx].isChecked
+              ? "dot dotChecked"
+              : "dot"
+          }
+        ></span>
+        <div>{questionName}</div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function DetailsDevis({ visible, item }) {
-  console.log("DetailsDevis-->");
 
   return (
     <div className="tab0">

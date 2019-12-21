@@ -9,8 +9,6 @@ import { Person, Update } from "@material-ui/icons";
 import Devis from "../components/Devis";
 
 export default function Summary({ setUser, user, setIsModalDisplayed }) {
-  console.log("Summary->");
-
   const [isLoading, setIsLoading] = useState(true);
   const [devisList, setDevisList] = useState();
   const history = useHistory();
@@ -77,6 +75,7 @@ export default function Summary({ setUser, user, setIsModalDisplayed }) {
               <div className="td4">Etat du bien</div>
               <div className="td5">Total Opération</div>
             </div>
+            <span className="td6"></span>
             <div
               className="td7"
               onClick={() => {

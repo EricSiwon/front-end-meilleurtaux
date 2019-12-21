@@ -7,8 +7,18 @@
 
 input:focus {
   outline: none !important;
-  border: 2px solid #ff9e23;
-  box-shadow: 0 0 10px #ff9e23;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* ################# Header ################# */
@@ -77,11 +87,31 @@ h2 {
   cursor: pointer;
 }
 
-/* span:before {
-  content: "*";
-} */
+.dot {
+  content: "";
+  background: url(./images/sprite-top.png) -35px -46px no-repeat;
+  width: 14px;
+  height: 15px;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  margin-top: -7px;
+}
+
+.dot:hover {
+  background-position: -34px -66px;
+}
+
+.dotChecked {
+  background-position: -34px -66px;
+  /* pointer-events: none; */
+}
 
 .itemText {
+  /* display: flex; */
+  /* flex: 1 1; */
+  width: 80%;
+  position: relative;
   font-weight: 800;
   font-size: 18px;
   text-transform: uppercase;
@@ -225,7 +255,6 @@ label {
   position: absolute;
   top: -30px;
   left: 435px;
-  /* right: 40px; */
   background-color: #ffffff;
 }
 .zipCodeSelected {
@@ -244,25 +273,25 @@ label {
 
 .inputAmount {
   background-color: #ffffff;
-  box-shadow: 0 4px 0 #e57f00;
+  box-shadow: 0 3px 0 #e57f00;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid #ff9e23;
+  border: 1px solid #e57f00;
   width: 250px;
-  height: 30px;
-  font-size: 18px;
+  height: 40px;
+  font-size: 25px;
   font-weight: 600;
-  text-align: end;
+  text-align: right;
+  padding-right: 10px;
   overflow: hidden;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
   margin-right: 5px;
 }
 
-/* input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-} */
+.lastinput {
+  box-shadow: 0 3px 0 #7e7974;
+  border: 1px solid #6b6967;
+}
 
 .cal {
   padding-right: 10px;
@@ -306,7 +335,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .inputEmailRed {
-  box-shadow: 0 4px 0 #e50000;
+  box-shadow: 0 2px 0 #e50000;
   border: 1px solid #ff2323;
 }
 
@@ -318,9 +347,10 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 0px 5px;
 }
 
-.conditionCheck{
+.conditionCheck {
   margin: 10px 4px 10px 40px;
 }
+
 .conditionError {
   border: 1px solid #ff2323;
   border-radius: 5px;
@@ -329,9 +359,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* ################# SendEmail ################# */
-
-.result {
-}
 
 .resultDossier {
   padding-left: 5px;
@@ -501,7 +528,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .td7 {
   text-align: center;
-  width: 50px;
+  width: 25px;
+}
+
+.td6 {
+  width: 15px;
 }
 
 .td7:hover {

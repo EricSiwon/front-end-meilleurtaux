@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../../src/App.css";
+
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -6,13 +8,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Mentions from "../components/Mentions";
 
-import "../../src/App.css";
-
 export default function CodePost({ Data, stepScreen, setStepScreen }) {
-  console.log("CodePost->stepScreen:", stepScreen);
-
   const [isLoading, setIsLoading] = useState(true);
   const [codePost, setCodePost] = useState();
+  const [zipVisible, setZipVisible] = useState(true);
+
   const [zipCode, setZipCode] = useState(
     Data[stepScreen].input2.isChecked === true
       ? Data[stepScreen].input2.zipcode
@@ -21,8 +21,6 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
   const [displayNext, SetDisplayNext] = useState(
     Data[stepScreen].isChecked === true ? true : false
   );
-
-  const [zipVisible, setZipVisible] = useState(true);
 
   const fetchData = async value => {
     try {
@@ -46,10 +44,6 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
   return (
     <>
       <Header />
-      <div>
-        idx {stepScreen} - screen {Data[stepScreen].screen} -
-        {!Data[stepScreen].isChecked ? "false" : "true"}
-      </div>
       <div className="wrapper">
         <h2>{Data[stepScreen].text}</h2>
         <div>
@@ -82,7 +76,9 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
               }}
             ></input>
           </div>
+
           {/* ######### display zipcode ######### */}
+
           <div className="relativePosition">
             {console.log("CodePoste->zipCodeList", codePost)}
             {isLoading === false && codePost.length && zipVisible ? (
@@ -95,16 +91,19 @@ export default function CodePost({ Data, stepScreen, setStepScreen }) {
                       onClick={() => {
                         setZipVisible(false);
                         setZipCode(value.city + " (" + value.code + ")");
-                        // setStepScreen(stepScreen + 1);
+
                         // Set checked question to true
                         Data[stepScreen].input1.isChecked = true;
                         Data[stepScreen].input2.isChecked = true;
+
                         //record value
                         Data[stepScreen].input2.zipcode =
                           value.city + " (" + value.code + ")";
+
                         //set step to true
                         Data[stepScreen].isChecked = true;
                         SetDisplayNext(Data[stepScreen].isChecked);
+
                         //record cookies
                         Cookies.set("meilleurtaux", Data, {
                           expires: 1,

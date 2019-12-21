@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.jpg";
 import "../../src/App.css";
 
-export default function Header({user}) {
+import logo from "../images/logo.jpg";
+
+export default function Header() {
   return (
     <>
       <div className="wrapper">

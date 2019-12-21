@@ -6,7 +6,7 @@ const mention_legale =
 
 export default function Mentions() {
   const [mention, setMention] = useState(false);
-  console.log("Mentions->");
+
   return (
     <>
       <div className="wrapper">

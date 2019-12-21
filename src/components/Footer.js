@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../src/App.css";
 
 import Cookies from "js-cookie";
+
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
@@ -50,17 +51,9 @@ export default function Footer({
         />
       </div>
 
-      {/* <div>
-        Barre avancement:{stepScreen}/{Data.length}:
-        {stepScreen > 0 ? (stepScreen / Data.length) * 100 : stepScreen}%
-      </div> */}
-
       {/* // display next button if 
       1=step of screen is checked to true
       2=displaynext = true (cheked by input information (zipcode,amount,email))
-      
-       (stepScreen > 3 && displayNext === true 
-        Data[stepScreen].isChecked || 
       */}
 
       {Data[stepScreen].isChecked === true && displayNext === true ? (

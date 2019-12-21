@@ -7,7 +7,6 @@ import Cookies from "js-cookie";
 import PasswordStrengthBar from "react-password-strength-bar";
 
 const Login = ({ setUser, setIsModalDisplayed }) => {
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // Pour accéder à l'historique de navigation
   const history = useHistory();
@@ -24,10 +23,6 @@ const Login = ({ setUser, setIsModalDisplayed }) => {
               username: "LeReacteur",
               password: password
             });
-
-            console.log("Login->response->", response.data);
-            //   { _id: "5dfb6a3cf0994edf65cb0fd6",
-            //   token: "SJEgX7rtjG1w331jnjDm1hgD3hLPkFKUHnk3OlurzmB8VOR4RK11WNJrDmBWPrWp" }
 
             if (response.data.token) {
               Cookies.set("token", response.data.token);

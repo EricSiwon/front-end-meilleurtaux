@@ -8,18 +8,16 @@ import Mentions from "../components/Mentions";
 import imgvisuel from "../images/visuel-desktop-email.jpg";
 
 export default function GetEmail({ Data, stepScreen, setStepScreen }) {
-  console.log("GetEmail->");
-
+  /* The default useState are initialized with the saved data if step are checked*/
   const [email, setEmail] = useState(
     Data[stepScreen].isChecked === true ? Data[stepScreen].email : undefined
   );
-  const [condition, SetCondition] = useState(false);
-  const [isErrorMessageDisplayed, setIsErrorMessageDisplayed] = useState(false);
   const [displayNext, SetDisplayNext] = useState(
     Data[stepScreen].isChecked === true ? true : false
   );
 
-  console.log("GetEmail->email:", email);
+  const [condition, SetCondition] = useState(false);
+  const [isErrorMessageDisplayed, setIsErrorMessageDisplayed] = useState(false);
 
   Data[stepScreen].email = email;
   Data[stepScreen].check1.isChecked = condition;
@@ -27,10 +25,6 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
   return (
     <>
       <Header />
-      <div>
-        idx {stepScreen} - screen {Data[stepScreen].screen} -
-        {!Data[stepScreen].isChecked ? "false" : "true"}
-      </div>
       <div className="wrapper">
         <h2>{Data[stepScreen].text}</h2>
         <div className="textZone">
@@ -41,7 +35,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
           <img
             className="imgGetEmail"
             src={imgvisuel}
-            alt="Image Desktop Email"
+            alt="Desktop Email"
           ></img>
         </div>
         <div className="inputRow row1">
@@ -54,7 +48,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
                 : "inputEmail"
             }
             type="email"
-            pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+            pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
             required
             autoComplete="off"
             size="50"
@@ -98,9 +92,7 @@ export default function GetEmail({ Data, stepScreen, setStepScreen }) {
               }
             }}
           ></input>
-          <label htmlFor="condition" >
-            {Data[stepScreen].check1.text}
-          </label>
+          <label htmlFor="condition">{Data[stepScreen].check1.text}</label>
           {isErrorMessageDisplayed === true && !condition && (
             <span className="conditionError">
               Veuillez accepter les conditions générales
