@@ -21,8 +21,9 @@
 
 # React
 
+- React.js
 - React router
-- Hooks
+- Hooks (useState, UseEffect)
 
 # External packages
 
@@ -31,3 +32,11 @@
 - js-cookie
 - react-password-strength-bar
 - react-sweet-progress
+
+# Back-End
+
+- Node.js
+- Express
+
+- MongoDB
+- Mongoose
